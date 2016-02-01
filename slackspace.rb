@@ -45,7 +45,6 @@ module SlackSpace
       #puts "RUN_WEBHOOK endpoint #{_endpoint}"
       #puts "RUN_WEBHOOK body #{body}"
       webhook = JSON.load(body)
-      puts "webhook loaded"
       payload = build_payload(webhook)
       puts "webhook built"
       push_webhook(endpoint=_endpoint, payload)
@@ -74,7 +73,7 @@ module SlackSpace
     
     # Build Slack incoming-webhook payload.
     def build_payload(webhook)
-      puts "BUILD_PAYLOAD webhook #{webhook}"
+      #puts "BUILD_PAYLOAD webhook #{webhook}"
       { :text => "Rackspace Notification",
         :attachments => build_attachments(webhook),
         :username => "SlackSpace",
@@ -97,8 +96,8 @@ module SlackSpace
       entity_ip_address = webhook['entity']['ip_addresses']['default']
       check_label = webhook['check']['label']
       #check_details = webhook['check']['details'].to_yaml
+     puts "alarm_label mickey" 
       alarm_label = webhook['alarm']['label']
-      
       [
         {
           "fallback" => "Your browser does not support full display of the Rackspace alarm.",
@@ -153,6 +152,7 @@ module SlackSpace
           #"thumb_url" => "http://example.com/path/to/thumb.png"
         }
       ]
+      puts "after alarm_label mickey"
     end
 
     #   # Get webhook json payload as ruby object.
