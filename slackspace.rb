@@ -83,7 +83,7 @@ module SlackSpace
     
     # Build Slack incoming-webhook attachments.
     def build_attachments(webhook)
-      puts "BUILD_ATTACHMENTS webhook #{webhook}"
+      #puts "BUILD_ATTACHMENTS webhook #{webhook}"
       state = webhook['details']['state']
       puts "state mickey"
       state_color = case state
@@ -98,7 +98,8 @@ module SlackSpace
       puts "timestamp mickey"
       entity_label = webhook['entity']['label']
       puts "entity label mickey"
-      entity_ip_address = webhook['entity']['ip_addresses']['default']
+      #entity_ip_address = webhook['entity']['ip_addresses']['default']
+      entity_ip_address = "look it up"
       puts "eneity ip label mickey"
       check_label = webhook['check']['label']
       puts "check label  label mickey"
