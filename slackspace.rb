@@ -74,7 +74,7 @@ module SlackSpace
     
     # Build Slack incoming-webhook payload.
     def build_payload(webhook)
-      #puts "BUILD_PAYLOAD webhook #{webhook}"
+      puts "BUILD_PAYLOAD webhook #{webhook}"
       { :text => "Rackspace Notification",
         :attachments => build_attachments(webhook),
         :username => "SlackSpace",
@@ -84,7 +84,7 @@ module SlackSpace
     
     # Build Slack incoming-webhook attachments.
     def build_attachments(webhook)
-      #puts "BUILD_ATTACHMENTS webhook #{webhook}"
+      puts "BUILD_ATTACHMENTS webhook #{webhook}"
       state = webhook['details']['state']
       state_color = case state
         when 'CRITICAL'; 'danger'
