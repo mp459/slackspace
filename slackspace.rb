@@ -46,9 +46,7 @@ module SlackSpace
       #puts "RUN_WEBHOOK body #{body}"
       webhook = JSON.load(body)
       payload = build_payload(webhook)
-      puts "webhook built"
       push_webhook(endpoint=_endpoint, payload)
-      puts "webhook pushed"
     end
     
     # Push formatted json webhook to Slack.
@@ -85,24 +83,17 @@ module SlackSpace
     def build_attachments(webhook)
       #puts "BUILD_ATTACHMENTS webhook #{webhook}"
       state = webhook['details']['state']
-      puts "state mickey"
       state_color = case state
         when 'CRITICAL'; 'danger'
         when 'WARNING'; 'warning'
         when 'OK'; 'good'
       end
-      puts "state color mickey"
       target = webhook['details']['target']
-      puts "target mickey"
       timestamp = Time.at(webhook['details']['timestamp'].to_i/1000).to_s
-      puts "timestamp mickey"
       entity_label = webhook['entity']['label']
-      puts "entity label mickey"
       #entity_ip_address = webhook['entity']['ip_addresses']['default']
       entity_ip_address = "look it up"
-      puts "eneity ip label mickey"
       check_label = webhook['check']['label']
-      puts "check label  label mickey"
       #check_details = webhook['check']['details'].to_yaml
       alarm_label = webhook['alarm']['label']
       [
@@ -159,7 +150,6 @@ module SlackSpace
           #"thumb_url" => "http://example.com/path/to/thumb.png"
         }
       ]
-      puts "after alarm_label mickey"
     end
 
     #   # Get webhook json payload as ruby object.
