@@ -91,8 +91,9 @@ module SlackSpace
       target = webhook['details']['target']
       timestamp = Time.at(webhook['details']['timestamp'].to_i/1000).to_s
       entity_label = webhook['entity']['label']
-      #entity_ip_address = webhook['entity']['ip_addresses']['default']
-      entity_ip_address = "look it up"
+      entity_ip_address = webhook['entity']['ip_addresses']['default']
+      entity_ip_address = "not available" if entity_ip_address.nil?
+      #mickey : we need a workaround for when IP = null
       check_label = webhook['check']['label']
       #check_details = webhook['check']['details'].to_yaml
       alarm_label = webhook['alarm']['label']
