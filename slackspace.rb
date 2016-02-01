@@ -85,18 +85,24 @@ module SlackSpace
     def build_attachments(webhook)
       puts "BUILD_ATTACHMENTS webhook #{webhook}"
       state = webhook['details']['state']
+      puts "state mickey"
       state_color = case state
         when 'CRITICAL'; 'danger'
         when 'WARNING'; 'warning'
         when 'OK'; 'good'
       end
+      puts "state color mickey"
       target = webhook['details']['target']
+      puts "target mickey"
       timestamp = Time.at(webhook['details']['timestamp'].to_i/1000).to_s
+      puts "timestamp mickey"
       entity_label = webhook['entity']['label']
+      puts "entity label mickey"
       entity_ip_address = webhook['entity']['ip_addresses']['default']
+      puts "eneity ip label mickey"
       check_label = webhook['check']['label']
+      puts "check label  label mickey"
       #check_details = webhook['check']['details'].to_yaml
-     puts "alarm_label mickey" 
       alarm_label = webhook['alarm']['label']
       [
         {
