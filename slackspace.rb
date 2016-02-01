@@ -42,7 +42,7 @@ module SlackSpace
   
     # Master call to process webhook.
     def run_webhook(_endpoint=endpoint, body)
-      #puts "RUN_WEBHOOK endpoint #{_endpoint}"
+      puts "RUN_WEBHOOK endpoint #{_endpoint}"
       #puts "RUN_WEBHOOK body #{body}"
       webhook = JSON.load(body)
       payload = build_payload(webhook)
